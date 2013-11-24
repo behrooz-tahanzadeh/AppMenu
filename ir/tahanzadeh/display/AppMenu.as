@@ -7,7 +7,6 @@ import flash.net.*;
 import flash.ui.Keyboard;
 import flash.utils.Dictionary;
 
-import ir.tahanzadeh.BtFunction;
 import ir.tahanzadeh.stype.deluxes.SBoolean;
 import ir.tahanzadeh.stype.natives.SFile;
 
@@ -62,7 +61,7 @@ public class AppMenu
 		
 		nmi.checked = (menuXml.@checked=='true');
 		
-		if(BtFunction.TrimString(menuXml.@href)!='')
+		if(trim(menuXml.@href)!='')
 		{
 			nmi.addEventListener(
 				Event.SELECT,
@@ -71,7 +70,7 @@ public class AppMenu
 			);
 		}
 		
-		if(BtFunction.TrimString(menuXml.@keyEquivalent)!='')
+		if(trim(menuXml.@keyEquivalent)!='')
 		{
 			nmi.keyEquivalent = menuXml.@keyEquivalent;
 		}
@@ -195,6 +194,11 @@ public class AppMenu
 	
 	
 	
-	
+	private function trim(str:String):String
+	{
+		var r:RegExp = /^[\t|\n|\s]*|[\t|\n|\s]*$/g;
+		
+		return str.replace(r,"");
+	}//eof
 }//eoc
 }//eop
